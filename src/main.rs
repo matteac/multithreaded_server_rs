@@ -6,12 +6,13 @@ use thrdpool::ThreadPool;
 
 fn main() {
     let listener: TcpListener = TcpListener::bind("127.0.0.1:2121").unwrap();
+    println!("Running on http://localhost:2121");
     let pool = ThreadPool::new(8);
     for stream in listener.incoming() {
         let stream = stream.unwrap();
         pool.execute(|| {
             handle_connection(stream);
-	    println!("Connection hdanlded");
+	    println!("Connection handlded");
         })
     }
 }
@@ -41,16 +42,16 @@ fn routing(buffer: [u8; 1024]) -> (String, String) {
     let sleep = b"GET /sleep HTTP/1.1\r\n";
 
     if buffer.starts_with(get_root) {
-        ("HTTP/1.1 200 OK".to_string(), "./index.html".to_string())
+        ("HTTP/1.1 200 OK".to_string(), "./static/index.html".to_string())
     } else if buffer.starts_with(get_about) {
-        ("HTTP/1.1 200 OK".to_string(), "./about.html".to_string())
+        ("HTTP/1.1 200 OK".to_string(), "./static/about.html".to_string())
     } else if buffer.starts_with(sleep) {
         thread::sleep(Duration::from_secs(10));
-        ("HTTP/1.1 200 OK".to_string(), "./index.html".to_string())
+        ("HTTP/1.1 200 OK".to_string(), "./static/index.html".to_string())
     } else {
         (
             "HTTP/1.1 404 NOT FOUND".to_string(),
-            "./404.html".to_string(),
+            "./static/404.html".to_string(),
         )
     }
 }

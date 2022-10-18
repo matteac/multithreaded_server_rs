@@ -12,3 +12,5 @@ dependencies = [
 [[package]]
 name = "thrdpool"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3cc0f08348b5bb56fb5a23394fe603ff346ad42adf915c46befd99b4a4b61b98"
