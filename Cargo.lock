@@ -6,9 +6,9 @@ version = 3
 name = "server"
 version = "0.1.0"
 dependencies = [
- "threadpool",
+ "thrdpool",
 ]
 
 [[package]]
-name = "threadpool"
+name = "thrdpool"
 version = "0.1.0"

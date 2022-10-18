@@ -9,4 +9,4 @@ edition = "2021"
 
 # You can use 
 
-threadpool = {path = "../threadpool"}
+thrdpool = {path = "../threadpool"}

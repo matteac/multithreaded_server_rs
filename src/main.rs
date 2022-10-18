@@ -2,7 +2,7 @@ use std::io::prelude::*;
 use std::net::{TcpListener, TcpStream};
 use std::time::Duration;
 use std::{fs, thread};
-use threadpool::ThreadPool;
+use thrdpool::ThreadPool;
 
 fn main() {
     let listener: TcpListener = TcpListener::bind("127.0.0.1:2121").unwrap();
@@ -11,6 +11,7 @@ fn main() {
         let stream = stream.unwrap();
         pool.execute(|| {
             handle_connection(stream);
+	    println!("Connection hdanlded");
         })
     }
 }
