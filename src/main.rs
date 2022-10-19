@@ -12,7 +12,7 @@ fn main() {
         let stream = stream.unwrap();
         pool.execute(|| {
             handle_connection(stream);
-	    println!("Connection handlded");
+	    println!("Connection handled");
         })
     }
 }
